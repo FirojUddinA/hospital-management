@@ -1,16 +1,16 @@
 <?php
-session_start();
-$role = 0;
-if (isset($_SESSION['role'])){
-    $role =($_SESSION['role']);
-}
-if(isset($_SESSION['user']) || !isset($_SESSION['user'])){
-
-}
-else{
-    header("location: login.php");
-}
-?>
+//session_start();
+//$role = 0;
+//if (isset($_SESSION['role'])){
+//    $role =($_SESSION['role']);
+//}
+//if(isset($_SESSION['user']) || !isset($_SESSION['user'])){
+//
+//}
+//else{
+//    header("location: login.php");
+//}
+//?>
 
 
 <!doctype html>

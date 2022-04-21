@@ -28,6 +28,9 @@ $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="../logout.php" class="nav-link">Logout</a>
+        </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -92,22 +95,22 @@ $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <p>
                             Doctors
                             <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="new-doctor.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Doctor</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="all-doctors.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All doctors</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Top Navigation + Sidebar</p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="pages/layout/boxed.html" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

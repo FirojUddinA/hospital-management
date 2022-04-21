@@ -8,7 +8,9 @@
 <div class="wrapper">
 
 <?php include "templates/admin-navigation.php"; ?>
-<?php echo '<a href="../logout.php">Logout</a>';?>
+
 
 
 <?php include "templates/admin-footer.php"; ?>
+</body>
+</html>
