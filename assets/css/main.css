@@ -16,11 +16,11 @@
   left: 0;
   width: 350px;
   min-height: 100%;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   z-index: 99;
 }
 .sign_container .sign_form label {
-  color: black;
+  color: rgb(0, 0, 0);
 }
 .sign_container .sign_form input.btn {
   color: #fff !important;
@@ -48,4 +48,8 @@
   height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.main-sidebar {
+  min-height: 100vh;
 }/*# sourceMappingURL=main.css.map */

@@ -150,7 +150,7 @@ VALUES ('$user_id','$specialist_at','$room_no','$fees','$off_day','$starting_tim
 //       seve to db and check
             $insert_address  = mysqli_query($conn, $insert_doc_details);
 
-            header('location: all-doctors.php');
+            header('location: doctors-all.php');
 
         }else{
             $errors['ef'] = 'Server is not responding. Please try again later!';
@@ -209,7 +209,7 @@ $specialist = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
                         <div class="card">
                             <div class="card-body">
-                                <form action="new-doctor.php" class="p-4" method="POST">
+                                <form action="doctor-new.php" class="p-4" method="POST">
                                     <?php
                                     if ($errors['ef'] != ''){
                                         echo '<p>'.$errors['ef'].'</p>';
@@ -369,7 +369,7 @@ $specialist = mysqli_fetch_all($result, MYSQLI_ASSOC);
                                     </div>
 
                                     <div class="center">
-                                        <input class="btn " type="submit" name="submit" value="Submit">
+                                        <input class="btn btn-block btn-lg btn-info" type="submit" name="submit" value="Submit">
                                     </div>
                                 </form>
                             </div>

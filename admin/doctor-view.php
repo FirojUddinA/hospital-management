@@ -63,9 +63,25 @@ $specialist = mysqli_fetch_assoc($result);
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header"><h2>User Information</h2></div>
+                            <div class="card-header"><h2>Doctor Information </h2></div>
                             <div class="card-body">
-                                <p>Name: <?php echo htmlspecialchars($doc['f_name']) ." ". htmlspecialchars($doc['l_name']) ?></p>
+                                <p class="lead">Id: <?php echo htmlspecialchars($doc['id']); ?></p>
+                                <p class="lead">Name: <?php echo htmlspecialchars($doc['f_name']) ." ". htmlspecialchars($doc['l_name']) ?></p>
+                                <p class="lead">Email: <a href="mailto:<?php echo htmlspecialchars($doc['email']); ?>"><?php echo htmlspecialchars($doc['email']); ?></a></p>
+                                <p class="lead">Phone: <a href="tel:<?php echo htmlspecialchars($doc['phone']); ?>"><?php echo htmlspecialchars($doc['phone']); ?></a></p>
+                                <p class="lead">Gender: <?php echo htmlspecialchars($doc['sex']); ?></p>
+                                <p class="lead">Address: <?php echo htmlspecialchars($doc['address']); ?></p>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="card">
+                            <div class="card-header"><h2>Doctor Time Shedule </h2></div>
+                            <div class="card-body">
+                                <p class="lead">Specialist: <?php echo htmlspecialchars($specialist['specialist_at']); ?></p>
+                                <p class="lead">Fees: <?php echo htmlspecialchars($doc['fees']); ?> Taka</p>
+                                <p class="lead">Room No: <?php echo htmlspecialchars($doc['room_no']); ?></p>
+                                <p class="lead">off_day: <?php echo htmlspecialchars($doc['off_day']); ?></p>
+                                <p class="lead">Time: <?php echo htmlspecialchars($doc['starting_time']) . " to ". htmlspecialchars($doc['end_time']); ?></p>
                             </div>
                             <!-- /.card-body -->
                         </div>

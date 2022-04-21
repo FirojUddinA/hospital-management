@@ -2,10 +2,13 @@
 
 
 include '../config.php';
-
-$sql = "SELECT d.f_name, d.l_name, d.phone, doc.specialist_at, u.email, u.id
-FROM doctors as doc , details as d, users as u
-WHERE doc.user_id = d.user_id and doc.user_id = u.id";
+$role = 0;
+if (isset($_SESSION['role'])){
+    $role =($_SESSION['role']);
+}
+$sql = "SELECT d.f_name, d.l_name, d.phone, u.email, u.id
+FROM  details as d, users as u
+WHERE d.user_id = u.id and u.role_id = '1'";
 
 $result  = mysqli_query($conn, $sql);
 
@@ -60,9 +63,8 @@ mysqli_close($conn);
                                 <table id="example1" class="table table-hover table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Doctor Id</th>
+                                        <th>Admin Id</th>
                                         <th>Name</th>
-                                        <th>Specialist</th>
                                         <th>email</th>
                                         <th>Phone</th>
                                         <th>Action</th>
@@ -75,14 +77,13 @@ mysqli_close($conn);
                                     ?>
                                         <tr>
                                             <td><?php echo $item['id'];?></td>
-                                            <td><?php echo $item['f_name'];?></td>
-                                            <td><?php echo $item['specialist_at'];?></td>
+                                            <td><?php echo $item['f_name'].' '.$item['f_name'];?></td>
                                             <td><?php echo $item['email'];?></td>
                                             <td><?php echo $item['phone'];?></td>
                                             <td>
-                                                <a href="view-doctor.php?id=<?php echo $item['id'];?>" class="btn btn-info">View</a>
-                                                <a href="update-doctor.php?id=<?php echo $item['id'];?>" class="btn btn-warning">Update</a>
-                                                <a href="delete-doctor.php?id=<?php echo $item['id'];?>" class="btn btn-danger">delete</a>
+                                                <a href="admin-view.php?id=<?php echo $item['id'];?>" class="btn btn-info">View</a>
+                                                <a href="admin-update.php?id=<?php echo $item['id'];?>" class="btn btn-warning">Update</a>
+                                                <a href="admin-delete.php?id=<?php echo $item['id'];?>" class="btn btn-danger">delete</a>
 
                                             </td>
                                         </tr>
