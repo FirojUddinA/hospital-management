@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2022 at 11:37 AM
+-- Generation Time: Apr 21, 2022 at 11:12 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -35,9 +35,9 @@ CREATE TABLE `details` (
   `address` varchar(255) NOT NULL,
   `sex` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `doctor_details` int(11) DEFAULT NULL,
-  `employee_details` int(11) DEFAULT NULL,
-  `admin_details` int(11) DEFAULT NULL
+  `doctor_details` tinyint(1) DEFAULT NULL,
+  `employee_details` tinyint(1) DEFAULT NULL,
+  `admin_details` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -54,6 +54,28 @@ INSERT INTO `details` (`id`, `user_id`, `f_name`, `l_name`, `address`, `sex`, `p
 (11, 14, 'tonny', 'uddin', '5a,ka-121,nurani maszid road, joar shahara, dhaka 1229\r\nprogoti soroni.', 'other', '01631330094', NULL, NULL, NULL),
 (12, 15, 'tonny', 'uddin', '5a,ka-121,nurani maszid road, joar shahara, dhaka 1229\r\nprogoti soroni.', 'female', '01631330094', NULL, NULL, NULL),
 (13, 16, 'user', 'asd', 'asdfsdf', 'male', '012548', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctors`
+--
+
+CREATE TABLE `doctors` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `department` varchar(255) NOT NULL,
+  `speciliest` varchar(255) NOT NULL,
+  `room_no` varchar(255) NOT NULL,
+  `fees` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `user_id`, `department`, `speciliest`, `room_no`, `fees`) VALUES
+(1, 1, 'afasdf', 'sadfasdf', 'sadfsad', 2323);
 
 -- --------------------------------------------------------
 
@@ -119,6 +141,13 @@ ALTER TABLE `details`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -142,6 +171,12 @@ ALTER TABLE `details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `doctors`
+--
+ALTER TABLE `doctors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -156,6 +191,12 @@ ALTER TABLE `user_role`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD CONSTRAINT `doctors_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`
