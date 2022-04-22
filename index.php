@@ -29,7 +29,7 @@ if (isset($_SESSION['user'])){
 //var_dump($_SESSION);
 
 
-$speciality = $doctor_id = $date = $time='';
+$speciality = $doctor_id = $date = $ap_time ='';
 $errors = ['speciality'=>'','doctor_id'=>'','ap_date'=>'','ap_time' =>'','ef' =>''];
 
 
@@ -57,14 +57,16 @@ if (isset($_POST['submit'])){
         if(empty($_POST['ap_time'])){
             $errors['ap_time'] = "Time field is required";
         }else{
-            $time = $_POST['ap_time'];
+            $ap_time = $_POST['ap_time'];
 
         }
-
 //        if (!array_filter($errors)){
 
+        print_r($doctor_id);
+        print_r( $date);
+        print_r($ap_time);
             $insert_query = "INSERT INTO  appointment ( 'user_id', 'doctor_id', 'ap_date', 'ap_time', 'status') 
-VALUES ('$user_id','$doctor_id','$date', '$time', '0' )";
+VALUES ('$user_id','$doctor_id','$date', '$ap_time', '0' )";
 
 //       seve to db and check
             $insert_user  = mysqli_query($conn, $insert_query);
