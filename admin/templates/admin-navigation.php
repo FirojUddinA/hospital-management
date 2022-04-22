@@ -143,7 +143,7 @@ $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="all-doctors.php" class="nav-link">
+                            <a href="user-all.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All doctors</p>
                             </a>
