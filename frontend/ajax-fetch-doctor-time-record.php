@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '','hospital');
+$conn = mysqli_connect('localhost', 'pan', 'pan','hospital');
 if (!$conn){
     echo 'connection error' . mysqli_connect_error();
 }
@@ -8,10 +8,10 @@ $datatime = $_POST['time'];
 $db=$conn;
 // fetch query
 function fetch_data(){
-  global $data;
   global $datatime;
   global $db;
-  $query="SELECT ap_date,ap_time FROM appointment WHERE ap_date ='". $datatime ."'";
+    global $data;
+  $query="SELECT ap_date,ap_time FROM appointment WHERE ap_date ='". $datatime ."' AND doctor_id ='". $data ."'";
   $exec=mysqli_query($db, $query);
   if(mysqli_num_rows($exec)>0){
     $row= mysqli_fetch_all($exec, MYSQLI_ASSOC);

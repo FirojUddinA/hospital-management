@@ -56,18 +56,18 @@ if (isset($_POST['submit'])){
         $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
         if ($user){
 
-            print_r($result);
+//            print_r($result);
 
             $role_sql = "SELECT * FROM `user_role` WHERE id='{$user['role_id']}'";
             $user_role  = mysqli_fetch_array(mysqli_query($conn, $role_sql), MYSQLI_ASSOC);
-            print_r($user_role);
+//            print_r($user_role);
             $_SESSION['login']  = true;
             $_SESSION['user']  = ['id'=> $user['id'],'email'=>$user['email']];
 
             if ($user_role && $user_role['role_id'] == 11202){
                 $_SESSION['role']  = 11202;
                 header('Location: admin/index.php');
-                print_r($user_role);
+//                print_r($user_role);
             }elseif ( $user_role && $user_role['role_id'] == 11205){
                 $_SESSION['role']  = 11205;
                 header('Location: doctors/index.php');

@@ -1,14 +1,11 @@
 
+<?php include "frontend/head.php"; ?>
 <?php
-session_start();
+//session_start();
 
 
 include 'config.php';
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 $sql = "SELECT * FROM `doc_specialist`";
 $result  = mysqli_query($conn, $sql);
 // print_r($result);
@@ -17,13 +14,13 @@ $dresult  = mysqli_query($conn, $dsql);
 
 
 $role = 0;
-$user_id='';
+$user_id=0;
 if (isset($_SESSION['role'])) {
     $role = ($_SESSION['role']);
 }
 if (isset($_SESSION['user'])){
     $user_id = $_SESSION['user']['id'];
-//    echo $user_id;
+
 }
 
 //var_dump($_SESSION);
@@ -35,10 +32,9 @@ $errors = ['speciality'=>'','doctor_id'=>'','ap_date'=>'','ap_time' =>'','ef' =>
 
 if (isset($_POST['submit'])){
 
-    print_r($_POST);
-//    if ($user_id == ''){
-//        header('location: login.php');
-//    }else{
+    if ($user_id == 0){
+        header('location: login.php');
+    }else{
         if(empty($_POST['speciality'])){
             $errors['speciality'] = "An speciality Firld is required";
         }else{
@@ -60,44 +56,40 @@ if (isset($_POST['submit'])){
             $ap_time = $_POST['ap_time'];
 
         }
-//        if (!array_filter($errors)){
+        if (!array_filter($errors)){
 
-        print_r($doctor_id);
-        print_r( $date);
-        print_r($ap_time);
-            $insert_query = "INSERT INTO  appointment ( 'user_id', 'doctor_id', 'ap_date', 'ap_time', 'status') 
-VALUES ('$user_id','$doctor_id','$date', '$ap_time', '0' )";
 
-//       seve to db and check
+            $insert_query = "INSERT INTO appointment( user_id, doctor_id, ap_date, ap_time, status) 
+VALUES ('$user_id','$doctor_id','$date', '$ap_time',false );";
+
+
+
             $insert_user  = mysqli_query($conn, $insert_query);
 
-//      seve to db and check
-            print_r($insert_user);
+
             if ($insert_user){
-                header("location:thank-you.php");
+                header('Location: thank-you.php');
 
             }else{
                 $errors['ef'] = 'Server is not responding. Please try again later!';
             }
 
-//        }else{
-//            $errors['ef'] = 'errors in the forms';
-//        }
+        }else{
+            $errors['ef'] = 'errors in the forms';
+        }
 
-//    }
+    }
 
 }
 
-
 ?>
 
-
-<?php include "frontend/head.php"; ?>
 <!-- ***** Header Area Start ***** -->
-<?php //include "frontend/navigation.php"; ?>
-<!-- ***** Header Area End ***** -->
+<?php include "frontend/navigation.php"; ?>
 
-<!-- ***** Hero Area Start ***** -->
+
+
+
 <section class="hero-area">
 
     <div class="hero-slides owl-carousel">

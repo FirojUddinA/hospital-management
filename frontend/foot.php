@@ -158,6 +158,7 @@ $(document).ready(function($){
         var optionSelected = $("option:selected", this);
         var time = this.value;
         var id = $('#doctors').val();
+        console.log(time);
         $.ajax({    
             type: "POST",
             url: "frontend/ajax-fetch-doctor-time-record.php",             

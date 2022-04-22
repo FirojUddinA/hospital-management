@@ -1,9 +1,9 @@
 <?php
 
-$user_id='';
+$user_id=0;
 
 if (isset($_SESSION['user'])){
-    $user_id = $_SESSION['user'];
+    $user_id = $_SESSION['user']['id'];
 }
 
 ?>
@@ -44,18 +44,21 @@ if (isset($_SESSION['user'])){
                                         <li class="nav-item">
                                             <a class="nav-link" href="about-us.php">About Us</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="services.php">Services</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="blog.php">News</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="contact.php">Contact</a>
-                                        </li>
+<!--                                        <li class="nav-item">-->
+<!--                                            <a class="nav-link" href="services.php">Services</a>-->
+<!--                                        </li>-->
+<!--                                        <li class="nav-item">-->
+<!--                                            <a class="nav-link" href="blog.php">News</a>-->
+<!--                                        </li>-->
+<!--                                        <li class="nav-item">-->
+<!--                                            <a class="nav-link" href="contact.php">Contact</a>-->
+<!--                                        </li>-->
                                         <?php if ($user_id):?>
                                         <li class="nav-item">
                                             <a class="nav-link" href="contact.php">My Profile</a>
+                                        </li>
+                                            <li class="nav-item">
+                                            <a class="nav-link" href="logout.php">logout</a>
                                         </li>
 
                                         <?php else: ?>
