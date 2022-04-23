@@ -9,7 +9,7 @@ if (isset($_GET['id'])){
    
 $sql = "SELECT a.id, a.user_id, a.doctor_id, a.ap_date, a.status, a.ap_time, a.created_at, d.f_name, d.l_name, d.phone, d.sex, d.address
 FROM appointment as a , details as d
-WHERE a.user_id = d.user_id and a.user_id = '$user_id'
+WHERE a.user_id = d.user_id and a.id = '$user_id'
 ORDER BY status ASC" ;
 
     $result  = mysqli_query($conn, $sql);
@@ -87,15 +87,9 @@ ORDER BY status ASC" ;
                             <p class="lead">Sex:  <?php echo htmlspecialchars($doc['sex']); ?></p>
                             <p class="lead">Address: <?php echo htmlspecialchars($doc['address']); ?></p>
                            
-                            <p class="lead <?php 
+                            <p class="lead ">Status: <?php
                                 if($doc['status'] == 1){
-                                    echo "bg-info" ;
-                                }else{
-                                    echo "bg-denger" ;
-                                }
-                            ?>">Status: <?php 
-                                if($doc['status'] == 1){
-                                    echo '<span class=" badge badge-info">Approved</span>Approved' ;
+                                    echo '<span class=" badge badge-info">Approved</span>' ;
                                 }else{
                                     echo '<span class=" badge badge-danger">unapproved</span>' ;
                                 }

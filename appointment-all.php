@@ -20,7 +20,7 @@ if (isset($_SESSION['user'])){
 
 
 $sql = "SELECT id, user_id, doctor_id, ap_date, status, ap_time
- FROM appointment where user_id = '$user_id' ORDER BY status ASC, ap_date ASC " ;
+ FROM appointment where user_id = '$user_id' ORDER BY  ap_date DESC " ;
 
 $result  = mysqli_query($conn, $sql);
 
@@ -68,8 +68,6 @@ mysqli_close($conn);
                                 <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Patient Id</th>
-                                    <th>Doctor Id</th>
                                     <th>Appointment Date</th>
                                     <th>Time(Created)</th>
                                     <th>Status</th>
@@ -83,16 +81,14 @@ mysqli_close($conn);
                                     ?>
                                     <tr>
                                         <td><?php echo $item['id'];?></td>
-                                        <td><?php echo $item['user_id'];?></td>
-                                        <td><?php echo $item['doctor_id'];?></td>
                                         <td><?php echo $item['ap_date'];?></td>
                                         <td><?php echo $item['ap_time'];?></td>
                                         <td >
                                             <?php
-                                                if($item['status'] ==1){
+                                                if($item['status'] == 1){
                                                     echo "approved";
                                                 }else {
-                                                    echo "approve";
+                                                    echo "unapproved";
                                                 }
                                             ?>
                                         </td>
