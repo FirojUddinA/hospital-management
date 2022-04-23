@@ -1,13 +1,13 @@
 <?php
 
-$user_id = 0;
+$user_id=0;
 if (isset($_SESSION['user'])){
-    $user_id =($_SESSION['user']);
+    $user_id = $_SESSION['user']['id'];
 
 }
 include '../config.php';
 
-$sql = "SELECT * FROM `details` WHERE  user_id='1'";
+$sql = "SELECT * FROM `details` WHERE  user_id='$user_id'";
 
 //        seve to db and check
 $result  = mysqli_query($conn, $sql);
@@ -76,80 +76,12 @@ $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <a href="index.php" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            Appointments
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas  fa-hospital-user"></i>
-                        <p>
-                            Apoinment
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="doctor-new.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New Doctor</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="doctors-all.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All doctors</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-cog"></i>
-                        <p>
-                            Admin
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="admin-new.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New Admin</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="admin-all.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All Admins</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-cog"></i>
-                        <p>
-                            User
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="new-doctor.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New Doctor</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="all-doctors.php" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All doctors</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                
                 <li class="nav-item">
                     <a href="profile.php" class="nav-link">
                         <i class="nav-icon far fa-calendar-alt"></i>
@@ -161,7 +93,7 @@ $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
                 <li class="nav-item">
                     <a href="../logout.php" class="nav-link">
-                        <i class="nav-icon fas fa-sign-out text-info"></i>
+                        <i class="nav-icon fas fa-sign-out-alt text-info"></i>
                         <p>Logout</p>
                     </a>
                 </li>

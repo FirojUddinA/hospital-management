@@ -2,12 +2,12 @@
 
 $user_id = 0;
 if (isset($_SESSION['user'])){
-    $user_id =($_SESSION['user']);
+    $user_id =($_SESSION['user']['id']);
 
 }
 include '../config.php';
 
-$sql = "SELECT * FROM `details` WHERE  user_id='1'";
+$sql = "SELECT * FROM `details` WHERE  user_id='$user_id'";
 
 //        seve to db and check
 $result  = mysqli_query($conn, $sql);
@@ -151,6 +151,14 @@ $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a href="appointment-all.php" class="nav-link">
+                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <p>
+                            Appointment
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="profile.php" class="nav-link">
                         <i class="nav-icon far fa-calendar-alt"></i>
                         <p>
@@ -161,7 +169,7 @@ $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
                 <li class="nav-item">
                     <a href="../logout.php" class="nav-link">
-                        <i class="nav-icon fas fa-sign-out text-info"></i>
+                        <i class="nav-icon fas fa-sign-out-alt text-info"></i>
                         <p>Logout</p>
                     </a>
                 </li>

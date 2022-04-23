@@ -1,21 +1,10 @@
-
-
-<?php include "templates/doctor-header.php"; ?>
 <?php
 
 
-$user_id=0;
-if (isset($_SESSION['user'])){
-    $user_id = $_SESSION['user']['id'];
-
-}
-
 include '../config.php';
 
-$sql = "SELECT a.id, a.user_id, a.doctor_id, a.ap_date, a.status, a.ap_time, d.f_name, d.l_name, d.phone, d.sex, d.address
-FROM appointment as a , details as d
-WHERE a.user_id = d.user_id and a.doctor_id = '$user_id'
-ORDER BY status ASC" ;
+$sql = "SELECT id, user_id, doctor_id, ap_date, status, ap_time
+ FROM appointment ORDER BY status ASC, ap_date ASC " ;
 
 $result  = mysqli_query($conn, $sql);
 
@@ -30,18 +19,16 @@ mysqli_close($conn);
 ?>
 
 
+<?php include "templates/admin-header.php"; ?>
+
 <link rel="stylesheet" href="../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-
-
-<title>Admin dashboard</title>
+<title>All appointments</title>
 </head>
 <body>
 
 <div class="wrapper">
 
-    <?php include "templates/doctor-navigation.php"; ?>
-
-       
+    <?php include "templates/admin-navigation.php"; ?>
 
 
     <div class="content-wrapper">
@@ -49,7 +36,7 @@ mysqli_close($conn);
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All appointments  <?php echo $user_id;?></h1>
+                        <h1>All appointments</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -73,8 +60,8 @@ mysqli_close($conn);
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Patient Name</th>
-                                        <th>Phone Number</th>
+                                        <th>Patient Id</th>
+                                        <th>Doctor Id</th>
                                         <th>Appointment Date</th>
                                         <th>Time(Created)</th>
                                         <th>Action</th>
@@ -87,13 +74,24 @@ mysqli_close($conn);
                                     ?>
                                         <tr>
                                             <td><?php echo $item['id'];?></td>
-                                            <td><?php echo $item['f_name'];?></td>
-                                            <td><?php echo $item['phone'];?></td>
+                                            <td><?php echo $item['user_id'];?></td>
+                                            <td><?php echo $item['doctor_id'];?></td>
                                             <td><?php echo $item['ap_date'];?></td>
                                             <td><?php echo $item['ap_time'];?></td>
                                             <td>
                                                 <a href="appointment-view.php?id=<?php echo $item['id'];?>" class="btn btn-info">View</a>
-                                               
+                                                <a href="appointment-update.php?id=<?php echo $item['id'];?>" 
+                                                class="btn btn-warning"><?php
+
+                                                if($item['status'] ==1){
+                                                    echo "approved";
+                                                }else {
+                                                    echo "approve";
+                                                }
+
+                                                ?></a>
+
+                                                <a href="appointment-delete.php?id=<?php echo $item['id'];?>" class="btn btn-danger">delete</a>
 
                                             </td>
                                         </tr>
@@ -114,9 +112,7 @@ mysqli_close($conn);
 
     </div>
 
-  
-    <?php include "templates/doctor-footer.php"; ?>
-
+    <?php include "templates/admin-footer.php"; ?>
     <script  src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>

@@ -55,9 +55,13 @@ if (isset($_SESSION['user'])){
 <!--                                        </li>-->
                                         <?php if ($user_id):?>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contact.php">My Profile</a>
+                                            <a class="nav-link" href="profile.php">My Profile</a>
                                         </li>
-                                            <li class="nav-item">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="appointment-all.php">Appointment</a>
+                                        </li>
+
+                                        <li class="nav-item">
                                             <a class="nav-link" href="logout.php">logout</a>
                                         </li>
 
@@ -68,7 +72,7 @@ if (isset($_SESSION['user'])){
                                         <?php endif; ?>
                                     </ul>
                                     <!-- Appointment Button -->
-                                    <a href="#app_book" class="btn medilife-appoint-btn ml-30">Book An Appointment</a>
+                                    <a href="index.php#app_book" class="btn medilife-appoint-btn ml-30">Book An Appointment</a>
                                 </div>
                             </nav>
                         </div>

@@ -1,3 +1,9 @@
 .main-sidebar {
   min-height: 100vh !important;
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 115px) !important;
+  height: calc(100vh - 115px) !important;
+  overflow: auto;
 }/*# sourceMappingURL=admin.css.map */

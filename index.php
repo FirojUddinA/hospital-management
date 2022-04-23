@@ -18,6 +18,7 @@ $user_id=0;
 if (isset($_SESSION['role'])) {
     $role = ($_SESSION['role']);
 }
+$user_id=0;
 if (isset($_SESSION['user'])){
     $user_id = $_SESSION['user']['id'];
 
@@ -83,13 +84,8 @@ VALUES ('$user_id','$doctor_id','$date', '$ap_time',false );";
 }
 
 ?>
-
 <!-- ***** Header Area Start ***** -->
 <?php include "frontend/navigation.php"; ?>
-
-
-
-
 <section class="hero-area">
 
     <div class="hero-slides owl-carousel">
@@ -138,7 +134,6 @@ VALUES ('$user_id','$doctor_id','$date', '$ap_time',false );";
     </div>
 </section>
 <!-- ***** Hero Area End ***** -->
-
 <!-- ***** Book An Appoinment Area Start ***** -->
 <style>
     .nice-select.disabled,.form-control:disabled, .form-control[readonly] {
@@ -152,6 +147,14 @@ VALUES ('$user_id','$doctor_id','$date', '$ap_time',false );";
         <?php
         if ($errors['ef'] != ''){
             echo '<p>'.$errors['ef'].'</p>';
+        }else if($errors['speciality'] != ''){
+            echo '<p>'.$errors['speciality'].'</p>';
+        }else if($errors['doctor_id'] != ''){
+            echo '<p>'.$errors['doctor_id'].'</p>';
+        }else if($errors['ap_date'] != ''){
+            echo '<p>'.$errors['ap_date'].'</p>';
+        }else if($errors['ap_time'] != ''){
+            echo '<p>'.$errors['ap_time'].'</p>';
         }
         ?>
         <div class="row">

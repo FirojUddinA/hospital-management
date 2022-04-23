@@ -1,0 +1,16 @@
+<?php
+include '../config.php';
+
+
+if (isset($_GET['id'])) {
+
+    $id = mysqli_real_escape_string($conn, $_GET['id']);
+//        make query
+    $sql = "DELETE FROM appointment WHERE id = '$id'";
+
+    $result = mysqli_query($conn, $sql);
+
+    header("location: appointment-all.php");
+
+
+}
